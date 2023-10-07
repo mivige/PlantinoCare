@@ -44,3 +44,7 @@ The whole project could be divided in 4 parts:
 - Front-end
   
   The front-end is made in PHP, the page access the database and read the last data inserted, then confront it with the 'info' table corresponding to the plant to display the correct instructions.
+
+### Representation:
+
+<img src="Images/SystemRepresentation.png">
