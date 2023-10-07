@@ -1,3 +1,13 @@
+/*
+    Author: MiViGe
+    Created: 01-03-2023 (DD-MM-YYYY)
+    Last Update: 11-09-2023 (DD-MM-YYYY)
+
+    DISCLAIMER: All the formulas to convert the values given by the sensors are specific to the sensors we used,
+                using different sensors you'll have to change those formulas.
+
+    !THIS CODE SHOULD BE CONTINUOUSLY RUNNING ON THE ARDUINO BOARD!
+*/
 // File to setup Arduino
 
 // Declaration of global variables
