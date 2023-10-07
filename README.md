@@ -27,6 +27,8 @@ The project was presented during the 2023 edition of the "Rome Maker Faire", bei
 ---
 ## How it works
 
+The whole project could be divided in 4 parts:
+
 - Arduino board
 
   The code that runs continuously on the Arduino board reads the data from the installed sensors, process them to make them readable with common units of measure and then print them on the serial port.
