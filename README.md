@@ -39,7 +39,7 @@ The whole project could be divided in 4 parts:
 
 - Database
   
-  The database runs on MySQL and is made of 3 tables: 'datas', 'averages' and 'info'. In the 'info' table there are constants values for specifics plants, in the SQL code you can see an example for a plant of basil. A deep-down database analysis is contained in this repository.
+  The database runs on MySQL and is made of 3 tables: 'datas', 'averages' and 'info'. In the 'info' table there are constants values for specifics plants, in the SQL code you can see an example for a plant of basil. A deep-down database analysis is contained in <a href="https://github.com/mivige/PlantinoCare/blob/66d1d65ed66797f7bc709f22ad5ee403c37a6253/DB%20Analysis.md">this repository</a>.
 
 - Front-end
   
