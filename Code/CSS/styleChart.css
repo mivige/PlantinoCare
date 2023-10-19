@@ -1,0 +1,91 @@
+body {
+    
+    background-color: #1e2030;
+}
+
+h3 {
+    
+    font-family: Arial;
+    color: #cad3f5; 
+    font-size: 25px;
+}
+
+header{
+    background-color: #ffff;
+    color: #ff0000;
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+section{
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 83px;
+    /*text-align: center;*/  
+}
+header small{
+    height: 80px;
+    vertical-align: middle;
+    line-height: 80px;
+    position: fixed;
+    right: 5px;
+    text-align: center;
+    transition: all .5s;
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+}
+a.active,a:hover{
+    background: #5b30146f;
+    border-radius: 10px;
+    border: 2px solid #5B30146f;
+    height: 40px;
+    transition: .5s;
+}
+
+#settingsContainer {
+    position: fixed;
+    width: 700px;
+    height: 120px;
+    outline: solid 1px #cad3f5;
+    transform: translate(-50%, -50%);
+    top: 150px;
+    left: 50%;
+}
+
+#settings {
+    width: auto;
+    height: auto;
+    position: absolute;
+    left: 30%;
+}
+
+#stats {
+    margin-left: 5%;
+    border-color: #cad3f5;
+    background-color: #1e2030;
+    color: #cad3f5;
+    height: 20px;
+}
+
+#dateInput {
+    margin-left: 10%;
+    border-color: #cad3f5;
+    background-color: #1e2030;
+    color: #cad3f5;
+    color-scheme: dark;
+    height: 18px;
+}
+
+#chartCanva {
+    position: fixed;
+    top: 325px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 200px;
+    width: 60%;
+}
