@@ -54,7 +54,7 @@ The values can be in optimal, excessive or insufficient levels. Different plants
 
 ---
 ## Logic Model
-![E-R](Excalidraw/Logic.excalidraw.png)
+![E-R](Images/E-R.png)
 
 ---
 ## Physical Model 
