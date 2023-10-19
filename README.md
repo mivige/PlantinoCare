@@ -14,7 +14,7 @@ Developed in occasion of the Arduino Day 2023, the project aims to assist in pla
 
 Using a microcontroller and various sensors, we collect data from the plant and the surrounding environment, the data is read by a Python script that then writes them in a MySQL database.
 
-A PHP web application then access and displays them in a user-friendly interface, accessible from smartphones and computers. This application provides instructions to improve plant conditions.
+A web application then access and displays them in a user-friendly interface, accessible from smartphones and computers. This application provides instructions to improve plant conditions.
 
 
 <img src="Images/fotoApp.jpg">
