@@ -4,7 +4,7 @@
 ![Language](https://img.shields.io/badge/Language-python-blue)
 ![Language](https://img.shields.io/badge/Language-php-purple)
 ![Language](https://img.shields.io/badge/Language-c++-orange)
-![License](https://img.shields.io/badge/License-GNU_GPL_2.0-red)
+![License](https://img.shields.io/badge/License-GPL_2.0-red)
 ---
 Developed in occasion of the Arduino Day 2023, the project aims to assist in plant management while promoting water conservation, which has become crucial in recent years. 
 
