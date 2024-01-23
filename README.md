@@ -53,6 +53,8 @@ The whole project could be divided in 4 parts:
 ---
 ## Copyright
 
+PlantinoCare © 2023 by Michele Vincenzo Gentile, Samuele Triveri is licensed under CC BY-NC-SA 4.0 
+
 <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/">
   <a property="dct:title" rel="cc:attributionURL" href="https://github.com/mivige/PlantinoCare">PlantinoCare</a>
   © 2023 by 
