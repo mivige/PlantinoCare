@@ -18,7 +18,7 @@ Using a microcontroller and various sensors, we collect data from the plant and 
 A web application then access and displays them in a user-friendly interface, accessible from smartphones and computers. This application provides instructions to improve plant conditions.
 
 
-<img src="img/fotoApp.jpg">
+<img src="img/fotoApp.png">
 
 
 On a second page is then possible to see past datas in a user-friendly graph.
@@ -49,7 +49,7 @@ The whole project could be divided in 4 parts:
 
 - Database
   
-  The database runs on MySQL and is made of 3 tables: 'datas', 'averages' and 'info'. In the 'info' table there are constants values for specifics plants, in the SQL code you can see an example for a plant of basil. A deep-down database analysis is contained in <a href="https://github.com/mivige/PlantinoCare/blob/66d1d65ed66797f7bc709f22ad5ee403c37a6253/DB%20Analysis.md">this repository</a>.
+  The database runs on MySQL and is made of 3 tables: 'datas', 'averages' and 'info'. In the 'info' table there are constants values for specifics plants, in the SQL code you can see an example for a plant of basil. A deep-down database analysis is contained in <a href="https://github.com/mivige/PlantinoCare/blob/main/documentation/DB%20Analysis.md">this repository</a>.
 
 - Front-end
   
