@@ -10,7 +10,7 @@
 Developed in occasion of the Arduino Day 2023, the project aims to assist in plant management while promoting water conservation, which has become crucial in recent years. 
 
 
-<img src="Images/fotoAlto.jpg">
+<img src="img/fotoAlto.jpg">
 
 
 Using a microcontroller and various sensors, we collect data from the plant and the surrounding environment, the data is read by a Python script that then writes them in a MySQL database.
@@ -18,7 +18,16 @@ Using a microcontroller and various sensors, we collect data from the plant and 
 A web application then access and displays them in a user-friendly interface, accessible from smartphones and computers. This application provides instructions to improve plant conditions.
 
 
-<img src="Images/fotoApp.jpg">
+<img src="img/fotoApp.jpg">
+
+
+On a second page is then possible to see past datas in a user-friendly graph.
+
+
+<img src="img/fotoGraph.png">
+
+
+<img src="img/fotoGraph2.png">
 
 
 It is also possible to automate actions such as watering and control light exposure.
@@ -48,7 +57,7 @@ The whole project could be divided in 4 parts:
 
 ### Representation:
 
-<img src="Images/SystemRepresentation.png">
+<img src="img/SystemRepresentation.png">
 
 ---
 ## Copyright

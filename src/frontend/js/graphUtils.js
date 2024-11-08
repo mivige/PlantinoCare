@@ -5,7 +5,7 @@ function showGraph(datasDate, choosedOption) {
     response
     */
     
-    $.post("../PHP/chartData.php", {requestedDate: datasDate, requestedOption: choosedOption},
+    $.post("php/chartData.php", {requestedDate: datasDate, requestedOption: choosedOption},
     function (data)
     {
         // parse the full data recived
@@ -53,7 +53,7 @@ function showGraph(datasDate, choosedOption) {
         var minReccomended;
         var maxReccomended;
         
-        $.post("../PHP/recValues.php", {plantID: 1, requestedOption: choosedOption}, 
+        $.post("php/recValues.php", {plantID: 1, requestedOption: choosedOption}, 
         function(result) {
             
             // parse the result values

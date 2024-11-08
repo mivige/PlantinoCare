@@ -8,7 +8,7 @@ function retriveDataset() {
         displaying cached results instead of newer ones
         */
         type: "POST",
-        url: '../PHP/newerValues.php',
+        url: 'php/newerValues.php',
     });
 }
 
