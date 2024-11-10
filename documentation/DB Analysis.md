@@ -1,58 +1,64 @@
 # DB Analysis
-The project *PlantinoCare* is a system that allows reading of datas about the health state of a plant, to make them available to the user, with the scope of monitoring, in a user-friendly web interface.
-The plant datas need to be archived for a certain amount of time, with the final scope of creating a graph representing the values variation in a specified interval.
 
-It's necessary to create a database that receive the plant datas from a client (continuously, every 10 seconds).
+The *PlantinoCare* project is a system designed to monitor plant health by reading various environmental data. This data is made available to users via a user-friendly web interface for easy monitoring.
 
-The datas that will be provided for each plant are: temperature, light exposure, co2 and soil moisture. It will be also necessary to save date and time of the aquisition for the previously mentioned graph creation.
+The collected plant data needs to be archived for a specific period to create graphs representing the variation of values within a given interval.
 
-The values can be in optimal, excessive or insufficient levels. Different plants have different reccomended values. 
+The system will receive plant data continuously (every 10 seconds). The data collected for each plant includes temperature, light exposure, CO2 levels, and soil moisture. Additionally, the timestamp for each reading is stored, which is used to generate the graphs.
 
----
-## Ipotesys
-- The temperature, measured in Celsius, will be considered a type decimal(5,2). Because, if the temperature will exceed a 3-digit integer, measuring it will be the last of your problems.
-- The light exposure, measured in Lux, will be considered a type decimal(6,2), values more than necessary for the use case.
-- The CO2 lever, measured in ppm, will be considered a type decimal(6,2), values more than necessary for the use case.
-- The soil moisture will be considered a type decimal(7,2).
-- The 'info' table will be a typological table, containing the info regarding the optimal dataset, an ID to identify uniquely the plant and the name.
-- The 'average' table will contain the hour-by-hour average datas. Every time a dataset is added to the 'average' table, the datas used to make the averages from the 'datas' table will be deleted. This is to contain the number of records that we get by doing a reading every 10 seconds (in a year we would get 3.153.600 entries for each plant, saving only the averages we get only 8766 entries per year).
+Values can be categorized as optimal, excessive, or insufficient, and different plants have different recommended values for these parameters.
 
 ---
-## Data scheme
 
-| Entity  | Attribute Name | Type | Description|
-| -------- | -------- | -------- | -------- |
-| datas | idDataset | INT(10) | PK, UNSIGNED|
-|  | temp | DECIMAL(5,2) | |
-|  | light | DECIMAL(6,2) | |
-|  | co2 | DECIMAL(6,2) | |
-|  | mois | DECIMAL(7,2) | |
-|  | recordTime | DATETIME | |
-|  | FK_idInfo | INT(10) | FK, UNSIGNED |
-| info  | idInfo(PK) | INT(10) | PK, UNSIGNED|
-|  | nome | VARCHAR(100) | |
-|  | minTemp | DECIMAL(5,2) | |
-|  | maxTemp | DECIMAL(5,2) | |
-|  | minLight | DECIMAL(6,2) | |
-|  | maxLight | DECIMAL(6,2) | |
-|  | minCo2 | DECIMAL(6,2) | |
-|  | maxCo2 | DECIMAL(6,2) | |
-|  | minMois | DECIMAL(7,2) | |
-|  | maxMois | DECIMAL(7,2) | |
-| averages | idAvg | INT(10) | PK, UNSIGNED|
-|  | temp | DECIMAL(5,2) | |
-|  | light | DECIMAL(6,2) | |
-|  | co2 | DECIMAL(6,2) | |
-|  | mois | DECIMAL(7,2) | |
-|  | startRecordTime | DATETIME | |
-|  | endRecordTime | DATETIME | |
-|  | FK_idInfo | INT(10) | FK, UNSIGNED |
+## Assumptions
+
+- **Temperature**: Stored as `DECIMAL(5,2)` because if temperatures are above 999.99°C the last of your problems is plant monitoring.
+- **Light Exposure**: Stored as `DECIMAL(6,2)` to support a wide range of values in Lux.
+- **CO2 Levels**: Stored as `DECIMAL(6,2)`, sufficient to capture typical CO2 levels in ppm.
+- **Soil Moisture**: Stored as `DECIMAL(7,2)` to allow for precise moisture measurements.
+- **`info` Table**: Stores plant-specific information, including recommended environmental parameters (optimal ranges).
+- **`averages` Table**: Stores hourly average data to reduce the size of the dataset and improve performance.
 
 ---
-## E/R Model 
+
+## Data Schema
+
+| Entity   | Attribute Name   | Type           | Description                           |
+|----------|------------------|----------------|---------------------------------------|
+| **datas**| idDataset        | INT(10) UNSIGNED | Primary Key                         |
+|          | temp             | DECIMAL(5,2)    | Temperature reading (°C)             |
+|          | light            | DECIMAL(6,2)    | Light exposure (Lux)                 |
+|          | co2              | DECIMAL(6,2)    | CO2 level (ppm)                      |
+|          | mois             | DECIMAL(7,2)    | Soil moisture                        |
+|          | recordTime       | DATETIME        | Timestamp of the reading             |
+|          | FK_idInfo        | INT(10) UNSIGNED | Foreign Key linking to `info` table  |
+| **info** | idInfo           | INT(10) UNSIGNED | Primary Key                         |
+|          | nome             | VARCHAR(100)    | Plant name                           |
+|          | minTemp          | DECIMAL(5,2)    | Minimum temperature                  |
+|          | maxTemp          | DECIMAL(5,2)    | Maximum temperature                  |
+|          | minLight         | DECIMAL(6,2)    | Minimum light exposure               |
+|          | maxLight         | DECIMAL(6,2)    | Maximum light exposure               |
+|          | minCo2           | DECIMAL(6,2)    | Minimum CO2 level                    |
+|          | maxCo2           | DECIMAL(6,2)    | Maximum CO2 level                    |
+|          | minMois          | DECIMAL(7,2)    | Minimum soil moisture                |
+|          | maxMois          | DECIMAL(7,2)    | Maximum soil moisture                |
+| **averages** | idAvg        | INT(10) UNSIGNED | Primary Key                         |
+|             | temp          | DECIMAL(5,2)    | Hourly average temperature           |
+|             | light         | DECIMAL(6,2)    | Hourly average light exposure        |
+|             | co2           | DECIMAL(6,2)    | Hourly average CO2 level             |
+|             | mois          | DECIMAL(7,2)    | Hourly average soil moisture         |
+|             | startRecordTime | DATETIME        | Start timestamp for averaging period |
+|             | endRecordTime   | DATETIME        | End timestamp for averaging period   |
+|             | FK_idInfo       | INT(10) UNSIGNED | Foreign Key linking to `info` table  |
+
+---
+
+## E/R Model
+
 ![E-R](../img/E-R.png)
 
 ---
+
 ## Physical Model 
 
 ```SQL
