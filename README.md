@@ -7,57 +7,46 @@
 ![Language](https://img.shields.io/badge/Language-c++-orange)
 ![License](https://img.shields.io/badge/License-GPL_2.0-red)
 ---
-Developed in occasion of the Arduino Day 2023, the project aims to assist in plant management while promoting water conservation, which has become crucial in recent years. 
 
+Developed in occasion of the Arduino Day 2023, this project aims to assist in plant management while promoting water conservation, a critical issue in recent years.
 
-<img src="img/fotoAlto.jpg">
+![Plant Care](img/fotoAlto.jpg)
 
+### Overview:
+This system utilizes a microcontroller and various sensors to collect data from the plant and its surrounding environment. A Python script processes the data and stores them in a MySQL database. The data are then accessed through a web application, which displays the information in a user-friendly interface that can be viewed on smartphones and computers. The application also provides helpful instructions for improving plant conditions.
 
-Using a microcontroller and various sensors, we collect data from the plant and the surrounding environment, the data is read by a Python script that then writes them in a MySQL database.
+![App Interface](img/fotoApp.png)
 
-A web application then access and displays them in a user-friendly interface, accessible from smartphones and computers. This application provides instructions to improve plant conditions.
+Additionally, the system offers a second page that allows users to view past data in an intuitive graph format.
 
+![Graph Temperature](img/fotoGraph.png)
+![Graph Umidity](img/fotoGraph2.png)
 
-<img src="img/fotoApp.png">
+The system can also automate actions like watering and controlling light exposure.
 
-
-On a second page is then possible to see past datas in a user-friendly graph.
-
-
-<img src="img/fotoGraph.png">
-
-
-<img src="img/fotoGraph2.png">
-
-
-It is also possible to automate actions such as watering and control light exposure.
-
-The project was presented during the 2023 edition of the "Rome Maker Faire", being chosen between competitors from all Europe.
+This project was showcased at the 2023 "Rome Maker Faire" and was selected among competitors from across Europe.
 
 ---
-## How it works
 
-The whole project could be divided in 4 parts:
+## How It Works
 
-- Arduino board
+The system is divided into four main components:
 
-  The code that runs continuously on the Arduino board reads the data from the installed sensors, process them to make them readable with common units of measure and then print them on the serial port.
+1. **Arduino Board**  
+   The Arduino continuously reads data from the installed sensors, processes the information to make it readable with standard units of measurement, and sends the data to the serial port.
 
-- Middleware
+2. **Middleware**  
+   A Python script listens to the serial port and inserts the data into a MySQL database. The script also logs the date and time of each reading. Every hour, it calculates average values from the data and stores them in a separate table called 'averages'. The 'datas' table is cleaned regularly to manage the large volume of data, as entries are recorded every 10 seconds.
 
-  A Python script that is constantly running listens to the serial port and insert the datas in a MySQL database table called 'datas', adding the date and time of the reading. Every hour this same scripts copy the average values read in another table called 'averages' and clean the 'datas' table, this is to contain the enourmous quantity of data that we could get in a large time frame, knowing that we have a database entry every 10 seconds.
+3. **Database**  
+   The system uses a MySQL database consisting of three tables: 'datas', 'averages', and 'info'. The 'info' table contains constant values for specific plants. For example, you can find the data for basil in the SQL code. A detailed database analysis is available in [this repository](https://github.com/mivige/PlantinoCare/blob/main/documentation/DB%20Analysis.md).
 
-- Database
-  
-  The database runs on MySQL and is made of 3 tables: 'datas', 'averages' and 'info'. In the 'info' table there are constants values for specifics plants, in the SQL code you can see an example for a plant of basil. A deep-down database analysis is contained in <a href="https://github.com/mivige/PlantinoCare/blob/main/documentation/DB%20Analysis.md">this repository</a>.
+4. **Front-End**  
+   The front-end is built primarily with HTML and JavaScript. The web page retrieves the latest data from the database and compares it with the plant's information from the 'info' table. Based on this comparison, it provides the user with care instructions. Additionally, users can visualize past data on a graph, selecting a date range.
 
-- Front-end
-  
-  The front-end is made mostly in HTML and JavaScript, the page access the database and read the last data inserted, then confront it with the 'info' table corresponding to the plant to display the correct instructions. In a second page is possible to visualize past data from a chosen date in a graph.
+### System Representation:
 
-### Representation:
-
-<img src="img/SystemRepresentation.png">
+![System Architecture](img/SystemRepresentation.png)
 
 ---
 ## Copyright
