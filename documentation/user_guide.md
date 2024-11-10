@@ -22,6 +22,7 @@ The middleware is responsible for reading sensor data from the Arduino, processi
 #### 1.3. `database/`  
 This folder contains the SQL schema and setup scripts for the MySQL database.
 - **`schema.sql`**: SQL file for creating the necessary tables (`datas`, `averages`, and `info`) in the database and inserting the first row of basil-specific data into the `info` table.
+- **`sample_data.sql`**: SQL file for importing sample data (`datas`, `averages`, and `info`) in the database. *The data are mostly dated 2023-10-16.*
 
 #### 1.4. `frontend/`  
 The front-end folder contains the HTML, CSS, PHP, and JavaScript files for the web interface that displays real-time and historical data.
