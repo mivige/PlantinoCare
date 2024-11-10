@@ -50,7 +50,7 @@ The values can be in optimal, excessive or insufficient levels. Different plants
 
 ---
 ## E/R Model 
-![E-R](Images/E-R.png)
+![E-R](../img/E-R.png)
 
 ---
 ## Physical Model 
