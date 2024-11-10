@@ -12,6 +12,8 @@ Developed in occasion of the Arduino Day 2023, this project aims to assist in pl
 
 ![Plant Care](img/fotoAlto.jpg)
 
+---
+
 ### Overview:
 This system utilizes a microcontroller and various sensors to collect data from the plant and its surrounding environment. A Python script processes the data and stores them in a MySQL database. The data are then accessed through a web application, which displays the information in a user-friendly interface that can be viewed on smartphones and computers. The application also provides helpful instructions for improving plant conditions.
 
