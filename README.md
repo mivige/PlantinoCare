@@ -1,6 +1,6 @@
 # PlantinoCare
 
-![Version](https://img.shields.io/badge/Version-0.2.0-brightgreen)
+![Version](https://img.shields.io/badge/Version-2.0.1-brightgreen)
 ![Language](https://img.shields.io/badge/Language-javascript-yellow)
 ![Language](https://img.shields.io/badge/Language-python-blue)
 ![Language](https://img.shields.io/badge/Language-php-purple)
