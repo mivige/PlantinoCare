@@ -8,8 +8,9 @@
         
         <!--CDNs-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js" integrity="sha512-tWHlutFnuG0C6nQRlpvrEhE4QpkG1nn2MOUMWmUeRePl4e3Aki0VB6W1v3oLjFtd0hVOtRQ9PHpSfN6u6/QXkQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <!--We're not using the latest version of Chart.js because chartjs-plugin-annotation still doesn't seem to support it-->
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/2.2.1/chartjs-plugin-annotation.min.js" integrity="sha512-qF3T5CaMgSRNrxzu69V3ZrYGnrbRMIqrkE+OrE01DDsYDNo8R1VrtYL8pk+fqhKxUBXQ2z+yV/irk+AbbHtBAg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         
         <!-- Local Javascript-->
@@ -17,12 +18,12 @@
         
         <script>
             
-            // need this later to set default dates
+            // By default, show datas that were captured today
             function getToday() {
-                var today = new Date();
-                var dd = String(today.getDate()).padStart(2, '0');
-                var mm = String(today.getMonth() + 1).padStart(2, '0');
-                var yyyy = today.getFullYear();
+                let today = new Date();
+                let dd = String(today.getDate()).padStart(2, '0');
+                let mm = String(today.getMonth() + 1).padStart(2, '0');
+                let yyyy = today.getFullYear();
                 
                 today = yyyy + '-' + mm + '-' + dd;
                 return today.toString()
@@ -30,7 +31,7 @@
             
             function reloadCanvas() {
                 $('#plantinoChart').remove();
-                var newCanva = document.createElement('canvas');
+                let newCanva = document.createElement('canvas');
                 newCanva.id = 'plantinoChart';
                 document.getElementById("chartCanva").appendChild(newCanva)
             }
@@ -45,6 +46,7 @@
             </small>
         </header>
         <section>
+
             <!--Create Inputs-->
 
             <div id="settingsContainer">
@@ -73,7 +75,7 @@
             </div>
             
             <script>
-                // wait for the DOM to load before executing javascript
+                // wait for the DOM to load
                 $(document).ready(function () {
                     
                     /*
@@ -82,13 +84,13 @@
                     to display
                     */
                     
-                    var datasDate = getToday();
+                    let datasDate = getToday();
                     
-                    var choosedOption = document.getElementById("stats").value;
+                    let choosedOption = document.getElementById("stats").value;
                     showGraph(datasDate, choosedOption);
 
                     /*
-                    When the option get changed, reload the canvas with the datas
+                    When the option gets changed, reload the canvas with the datas
                     recorded for the requested option
                     */
                     
