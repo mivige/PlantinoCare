@@ -14,23 +14,28 @@ function retriveDataset() {
 
 
 function drawGaugeArc(canvaID, option, data) {
-    var canvas = document.getElementById(canvaID);
-    var context = canvas.getContext("2d");
-    var fixedValue; // need to correctly draw the arc
+    let canvas = document.getElementById(canvaID);
+    let context = canvas.getContext("2d");
+    let fixedValue; // need to correctly draw the arc
     
-    if(option == "temp") {
-        fixedValue = 1 + data.temp / 40;
+    switch(option) {
+        case "temp":
+            fixedValue = 1 + data.temp / 40;
+            break;
+
+        case "light":
+            fixedValue = 1 + data.light / 1500;
+            break;
+
+        case "co2":
+            fixedValue = 1 + data.co2 / 1500;
+            break;
+
+        default:
+            fixedValue = 1 + data.mois / 1000;
+            break;
     }
-    else if(option == "light") {
-        fixedValue = 1 + data.light / 1500;
-    }
-    else if(option == "co2") {
-        fixedValue = 1 + data.co2 / 1500;
-    }
-    else {
-        fixedValue = 1 + data.mois / 1000;
-    }
-    
+
     context.beginPath();
     context.arc(125, 125, 113, Math.PI, fixedValue * Math.PI, false);
     context.lineWidth = 12;
@@ -40,7 +45,7 @@ function drawGaugeArc(canvaID, option, data) {
 
 
 /*
-Once the datas have been retrived from ajax,
+Once the datas have been retrived 
 they get parsed and the page gets updated
 with them
 */
@@ -48,21 +53,26 @@ with them
 function reloadDataset() {
     retriveDataset().then(
     function(response) {
-        var dataset = JSON.parse(response);
+        let dataset = JSON.parse(response);
+
+        // background colors
+        const GOOD = "#a6da95";
+        const OK = "#f0c6c6";
+        const BAD = "#ed8796";
         
-        // TEMPERATURE
+        // ######### TEMPERATURE #########
         
         // Change background color based on the temperature
-        var td = document.getElementById("temperatureBox");
+        let td = document.getElementById("temperatureBox");
 
         if (dataset.temp >= 18 && dataset.temp <= 27) {
-            bgColor = "#a6da95";
+            bgColor = GOOD;
         }
         else if (dataset.temp >= 10 && dataset.temp <= 18 || dataset.temp >= 27 && dataset.temp <= 30) {
-            bgColor = "#f0c6c6";
+            bgColor = OK;
         }
         else {
-            bgColor = "#ed8796";
+            bgColor = BAD;
         }
 
         td.setAttribute("style", "background-color:" + bgColor)
@@ -84,19 +94,19 @@ function reloadDataset() {
             document.getElementById("tempInstructions").innerHTML = "The temperature is optimal.";
         }
 
-        // LIGHT
+        // ######### LIGHT #########
         
         // Change background color based on the light
         td = document.getElementById("lightBox");
 
         if (dataset.light >= 800 && dataset.light <= 1250) {
-            bgColor = "#a6da95";
+            bgColor = GOOD;
         }
         else if (dataset.light >= 400 && dataset.light < 800 || dataset.light >= 1250 && dataset.light < 1500) {
-            bgColor = "#f0c6c6";
+            bgColor = OK;
         }
         else {
-            bgColor = "#ed8796";
+            bgColor = BAD;
         }
 
         td.setAttribute("style", "background-color:" + bgColor)
@@ -118,19 +128,19 @@ function reloadDataset() {
             document.getElementById("lightInstructions").innerHTML = "The light exposure is optimal.";
         }
 
-        // CO2
+        // ######### CO2 #########
         
         // Change background color based on the co2
         td = document.getElementById("co2Box");
 
         if (dataset.co2 >= 800 && dataset.co2 <= 1500) {
-            bgColor = "#a6da95";
+            bgColor = GOOD;
         }
         else if (dataset.co2 >= 500 && dataset.co2 < 800 || dataset.co2 >= 1500 && dataset.co2 < 1750) {
-            bgColor = "#f0c6c6";
+            bgColor = OK;
         }
         else {
-            bgColor = "#ed8796";
+            bgColor = BAD;
         }
 
         td.setAttribute("style", "background-color:" + bgColor)
@@ -152,19 +162,19 @@ function reloadDataset() {
             document.getElementById("co2Instructions").innerHTML = "The CO2 level is optimal.";
         }
 
-        // UMIDITY
+        // ######### UMIDITY #########
         
         // Change background color based on the co2
         td = document.getElementById("moisBox");
 
         if (dataset.mois >= 300 && dataset.mois <= 700) {
-            bgColor = "#a6da95";
+            bgColor = GOOD;
         }
         else if (dataset.mois >= 200 && dataset.mois < 300 || dataset.mois >= 700 && dataset.mois < 800) {
-            bgColor = "#f0c6c6";
+            bgColor = OK;
         }
         else {
-            bgColor = "#ed8796";
+            bgColor = BAD;
         }
 
         td.setAttribute("style", "background-color:" + bgColor)
